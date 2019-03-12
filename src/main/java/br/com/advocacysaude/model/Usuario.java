@@ -55,11 +55,6 @@ public abstract class Usuario implements Serializable {
 	public Usuario() {
 		super();
 		this.dataCadastro = new Date();
-		this.ultimoAcesso = null;
-		this.email = "email@dominio.com.br";
-		this.senha = "";
-		this.telefone = "(99) 9999-999";
-		this.endereco = null;
 	}
 
 }

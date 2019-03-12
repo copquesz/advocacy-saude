@@ -1,6 +1,8 @@
 package br.com.advocacysaude.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 import lombok.Getter;
@@ -9,6 +11,7 @@ import lombok.ToString;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "id")
+@Inheritance(strategy = InheritanceType.JOINED)
 @Getter
 @Setter
 @ToString
@@ -24,9 +27,6 @@ public class PessoaJuridica extends Usuario{
 
 	public PessoaJuridica() {
 		super();
-		this.razaoSocial = "Não Informado";
-		this.nomeFantasia = "Não Informado";
-		this.cnpj = "99.999.999/0001-99";
 	}	
 
 }
