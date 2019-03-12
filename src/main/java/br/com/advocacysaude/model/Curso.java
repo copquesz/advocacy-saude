@@ -47,7 +47,7 @@ public class Curso implements Serializable{
 	private String link;
 	
 	@JoinColumn(name = "banner_id")
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Arquivo banner;
 	
 	@JoinColumn(name = "usuario_id")
