@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +20,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
 
+import br.com.advocacysaude.enumerated.TipoUsuario;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -47,6 +50,9 @@ public abstract class Usuario implements Serializable {
 	private String senha;
 
 	private String telefone;
+	
+	@Enumerated(EnumType.ORDINAL)
+	private TipoUsuario tipoUsuario;
 	
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "endereco_id")
