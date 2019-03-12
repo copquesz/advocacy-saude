@@ -22,8 +22,8 @@ public class UsuarioController {
 		this.pfs = pfs;
 	}
 	
-	@GetMapping("/")
-	public String main(HttpServletRequest request, Model model) {
+	@GetMapping("/usuarios")
+	public String getUsuarios(HttpServletRequest request, Model model) {
 
 		model.addAttribute("path", request.getContextPath());
 		
