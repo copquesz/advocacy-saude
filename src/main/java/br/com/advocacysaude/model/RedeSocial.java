@@ -31,6 +31,6 @@ public class RedeSocial implements Serializable {
 	private Long seguidores;
 
 	@Enumerated(EnumType.ORDINAL)
-	TipoRedeSocial tipo;
+	private TipoRedeSocial tipo;
 
 }
