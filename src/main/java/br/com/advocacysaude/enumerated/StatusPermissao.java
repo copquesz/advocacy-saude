@@ -3,7 +3,7 @@ package br.com.advocacysaude.enumerated;
 import lombok.Getter;
 
 @Getter
-public enum TipoPermissao {
+public enum StatusPermissao {
 
     ACESSO_LIBERADO(0, "Acesso Liberado"),
     ACESSO_BLOQUEADO(1, "Acesso Bloqueado");
@@ -11,7 +11,7 @@ public enum TipoPermissao {
     private int id;
     private String descricao;
 
-    TipoPermissao(int id, String descricao){
+    StatusPermissao(int id, String descricao){
         this.id = id;
         this.descricao = descricao;
     }

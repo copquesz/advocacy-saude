@@ -12,7 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import br.com.advocacysaude.enumerated.TipoPermissao;
+import br.com.advocacysaude.enumerated.StatusPermissao;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -37,12 +37,12 @@ public class Permissao implements Serializable{
 	private UsuarioComum usuario;
 	
 	@Enumerated(EnumType.ORDINAL)
-	private TipoPermissao status;
+	private StatusPermissao status;
 	
 	public Permissao() {
 		super();
 		this.dataCadastro = new Date();
-		this.status = TipoPermissao.ACESSO_BLOQUEADO;
+		this.status = StatusPermissao.ACESSO_BLOQUEADO;
 	}
 
 }
