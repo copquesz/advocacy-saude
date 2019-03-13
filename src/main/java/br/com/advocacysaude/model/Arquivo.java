@@ -36,8 +36,6 @@ public class Arquivo implements Serializable {
 	private MultipartFile arquivo;
 	
 	public Arquivo() {
-		this.caminho = "";
-		this.arquivo = null;
 	}
 
 }
