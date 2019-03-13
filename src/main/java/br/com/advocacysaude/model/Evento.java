@@ -52,6 +52,10 @@ public class Evento implements Serializable{
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Arquivo banner;
 	
+	@JoinColumn(name = "usuario_id")
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Usuario usuario;
+	
 	@JoinColumn(name = "patologia_id")
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Patologia patologia;
