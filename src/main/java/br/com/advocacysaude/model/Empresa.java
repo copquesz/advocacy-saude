@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -40,5 +42,9 @@ public class Empresa implements Serializable {
 	
 	@OneToMany(mappedBy = "empresa", fetch = FetchType.LAZY, orphanRemoval = true)
 	private List<Edital> editais;
+	
+	@JoinColumn(name = "usuario_id")
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Usuario usuario;
 
 }
