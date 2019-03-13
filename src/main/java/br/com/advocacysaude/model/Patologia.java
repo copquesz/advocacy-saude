@@ -2,11 +2,14 @@ package br.com.advocacysaude.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -32,5 +35,8 @@ public class Patologia implements Serializable{
 	private String nome;
 	
 	private String descricao;	
+	
+	@OneToMany(mappedBy = "patologia", fetch = FetchType.LAZY, orphanRemoval = true)
+	private List<SubPatologia> subpatologias;
 	
 }
