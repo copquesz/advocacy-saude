@@ -56,13 +56,6 @@ public class Curso implements Serializable{
 	
 	public Curso() {
 		this.dataCadastro = new Date();
-
-		this.titulo = "Não Informado";
-		this.introducao = "Não Informado";
-		this.conteudo = "Não Informado";
-		this.link = "";
-		this.banner = null;
-		this.usuario = null;
 	}
 
 }
