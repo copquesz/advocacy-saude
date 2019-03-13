@@ -60,5 +60,15 @@ public class Edital implements Serializable{
 	@JoinColumn(name = "empresa_id")
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Empresa empresa;
+	
+	@JoinColumn(name = "usuario_id")
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Usuario usuario;
+	
+	public Edital() {
+		super();
+		this.dataCadastro = new Date();
+	}
+	
 
 }
