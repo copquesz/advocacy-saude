@@ -23,6 +23,14 @@ public class UsuarioComumService {
 		return repository.findById(id);
 	}
 	
+	public boolean existsByEmail(String email) {
+		return repository.existsByEmail(email);
+	}
+	
+	public boolean existsByCpf(String cpf) {
+		return repository.existsByCpf(cpf);
+	}
+	
 	public List<UsuarioComum> findAll(){
 		return repository.findAll();
 	}
