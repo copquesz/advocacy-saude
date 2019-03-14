@@ -23,6 +23,14 @@ public class UsuarioEntidadeService {
 		return repository.findById(id);
 	}
 	
+	public boolean existsByEmail(String email) {
+		return repository.existsByEmail(email);
+	}
+	
+	public boolean existsByCnpj(String cnpj) {
+		return repository.existsByCnpj(cnpj);
+	}
+	
 	public List<UsuarioEntidade> findAll(){
 		return repository.findAll();
 	}

@@ -7,5 +7,8 @@ import br.com.advocacysaude.model.UsuarioEntidade;
 
 @Repository
 public interface UsuarioEntidadeRepository extends JpaRepository<UsuarioEntidade, Long>{
+	
+	boolean existsByEmail(String email);
+	boolean existsByCnpj(String cnpj);
 
 }
