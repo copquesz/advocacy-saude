@@ -24,6 +24,7 @@ import lombok.ToString;
 public class UsuarioComum extends PessoaFisica {
 
 	private static final long serialVersionUID = -7378262740418104246L;
+	
 	@ManyToMany
 	@JoinTable(name = "usuario_comum_has_permissoes", joinColumns = {
 			@JoinColumn(name = "usuario_id") }, inverseJoinColumns = { @JoinColumn(name = "permissao_id") })
