@@ -51,7 +51,7 @@ public abstract class Usuario implements Serializable {
 	private String telefone;
 	
 	@Enumerated(EnumType.ORDINAL)
-	private TipoUsuario tipoUsuario;
+	private TipoUsuario tipo;
 	
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "endereco_id")
