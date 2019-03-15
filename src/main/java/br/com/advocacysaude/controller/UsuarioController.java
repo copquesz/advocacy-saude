@@ -19,14 +19,14 @@ import br.com.advocacysaude.service.UsuarioEntidadeService;
 import br.com.advocacysaude.service.UsuarioService;
 
 @Controller
-public class UsuariosController {
+public class UsuarioController {
 
 	private UsuarioService us;
 	private UsuarioComumService ucs;
 	private UsuarioEntidadeService ues;
 
 	@Autowired
-	public UsuariosController(UsuarioService us, UsuarioComumService ucs, UsuarioEntidadeService ues) {
+	public UsuarioController(UsuarioService us, UsuarioComumService ucs, UsuarioEntidadeService ues) {
 		super();
 		this.us = us;
 		this.ucs = ucs;

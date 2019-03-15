@@ -7,8 +7,8 @@ import br.com.advocacysaude.model.UsuarioComum;
 
 @Repository
 public interface UsuarioComumRepository extends JpaRepository<UsuarioComum, Long> {
-	
+
 	boolean existsByEmail(String email);
 	boolean existsByCpf(String cpf);
-
+	
 }
