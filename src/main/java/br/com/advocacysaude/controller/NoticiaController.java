@@ -33,7 +33,7 @@ public class NoticiaController {
 		model.addAttribute("path", request.getContextPath());
 
 		Optional<Noticia> noticia = ns.findById(id);
-		model.addAttribute("noticia", noticia);
+		model.addAttribute("noticia", noticia.get());
 
 		return "";
 	}
@@ -68,7 +68,7 @@ public class NoticiaController {
 		model.addAttribute("path", request.getContextPath());
 
 		Optional<Noticia> noticia = ns.findById(id);
-		model.addAttribute("noticia", noticia);
+		model.addAttribute("noticia", noticia.get());
 
 		return "";
 	}
