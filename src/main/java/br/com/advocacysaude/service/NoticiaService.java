@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.advocacysaude.model.Noticia;
+import br.com.advocacysaude.model.Usuario;
 import br.com.advocacysaude.repository.NoticiaRepository;
 
 @Service
@@ -15,7 +16,8 @@ public class NoticiaService {
 	@Autowired
 	private NoticiaRepository repository;
 	
-	public Noticia save(Noticia noticia) {
+	public Noticia save(Noticia noticia, Usuario usuario) {
+		noticia.setUsuario(usuario);
 		return repository.save(noticia);
 	}
 	
