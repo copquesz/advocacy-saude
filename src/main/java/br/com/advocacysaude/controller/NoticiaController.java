@@ -25,13 +25,16 @@ public class NoticiaController {
 		super();
 		this.ns = ns;
 	}
-	
+
 	@GetMapping("/noticia/{id}")
 	public String getVisualizarNoticiaHome(@PathVariable Long id, HttpServletRequest request, Model model) {
-		
+
+		// paths da requisição e de redirecionamento
+		model.addAttribute("path", request.getContextPath());
+
 		Optional<Noticia> noticia = ns.findById(id);
 		model.addAttribute("noticia", noticia);
-		
+
 		return "";
 	}
 
@@ -40,30 +43,33 @@ public class NoticiaController {
 
 		// paths da requisição e de redirecionamento
 		model.addAttribute("path", request.getContextPath());
-		
+
 		return "";
 	}
-	
+
 	@PostMapping("painel/noticia/cadastro")
 	public String postCadastrarNoticia(Noticia noticia, HttpServletRequest request, Model model) {
 
 		// paths da requisição e de redirecionamento
 		model.addAttribute("path", request.getContextPath());
-		
+
 		Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
-		
+
 		noticia = ns.save(noticia, usuario);
 		model.addAttribute("noticia", noticia);
-		
+
 		return "";
 	}
-	
+
 	@GetMapping("painel/noticia/{id}")
 	public String getVisualizarNoticiaPainel(@PathVariable Long id, HttpServletRequest request, Model model) {
-		
+
+		// paths da requisição e de redirecionamento
+		model.addAttribute("path", request.getContextPath());
+
 		Optional<Noticia> noticia = ns.findById(id);
 		model.addAttribute("noticia", noticia);
-		
+
 		return "";
 	}
 
