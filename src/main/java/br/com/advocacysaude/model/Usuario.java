@@ -29,7 +29,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public abstract class Usuario implements Serializable {
+public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = -7785539653454226720L;
 
