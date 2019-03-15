@@ -24,19 +24,7 @@ public class NoticiaController {
 	public NoticiaController(NoticiaService ns) {
 		super();
 		this.ns = ns;
-	}
-
-	@GetMapping("/noticia/{id}")
-	public String getVisualizarNoticiaHome(@PathVariable Long id, HttpServletRequest request, Model model) {
-
-		// paths da requisição e de redirecionamento
-		model.addAttribute("path", request.getContextPath());
-
-		Optional<Noticia> noticia = ns.findById(id);
-		model.addAttribute("noticia", noticia.get());
-
-		return "";
-	}
+	}	
 
 	@GetMapping("/painel/noticia/cadastro")
 	public String getCadastrarNoticia(HttpServletRequest request, Model model) {
@@ -57,6 +45,18 @@ public class NoticiaController {
 
 		noticia = ns.save(noticia, usuario);
 		model.addAttribute("noticia", noticia);
+
+		return "";
+	}
+	
+	@GetMapping("/noticia/{id}")
+	public String getVisualizarNoticiaHome(@PathVariable Long id, HttpServletRequest request, Model model) {
+
+		// paths da requisição e de redirecionamento
+		model.addAttribute("path", request.getContextPath());
+
+		Optional<Noticia> noticia = ns.findById(id);
+		model.addAttribute("noticia", noticia.get());
 
 		return "";
 	}
