@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.advocacysaude.model.Curso;
+import br.com.advocacysaude.model.Usuario;
 import br.com.advocacysaude.repository.CursoRepository;
 
 @Service
@@ -15,7 +16,7 @@ public class CursoService {
 	@Autowired
 	private CursoRepository repository;
 
-	public Curso save(Curso curso) {
+	public Curso save(Curso curso, Usuario usuario) {
 		return repository.save(curso);
 	}
 	
