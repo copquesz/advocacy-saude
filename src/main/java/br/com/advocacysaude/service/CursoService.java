@@ -17,6 +17,7 @@ public class CursoService {
 	private CursoRepository repository;
 
 	public Curso save(Curso curso, Usuario usuario) {
+		curso.setUsuario(usuario);
 		return repository.save(curso);
 	}
 	
