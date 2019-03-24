@@ -39,5 +39,9 @@ public class SubPatologia implements Serializable {
 	@JoinColumn(name = "patologia_id")
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Patologia patologia;
+	
+	public SubPatologia() {
+		this.dataCadastro = new Date();
+	}
 
 }

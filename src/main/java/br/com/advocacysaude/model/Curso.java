@@ -43,12 +43,13 @@ public class Curso implements Serializable{
 	@Column(columnDefinition = "TEXT")
 	private String conteudo;
 	
-	@Column(columnDefinition = "TEXT")
-	private String link;
-	
 	@JoinColumn(name = "banner_id")
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Arquivo banner;
+	
+	@JoinColumn(name = "video_id")
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Arquivo video;
 	
 	@JoinColumn(name = "usuario_id")
 	@ManyToOne(fetch = FetchType.LAZY)

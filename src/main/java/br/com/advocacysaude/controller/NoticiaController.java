@@ -1,6 +1,7 @@
 package br.com.advocacysaude.controller;
 
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -8,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import br.com.advocacysaude.enumerated.Relevancia;
 import br.com.advocacysaude.model.Noticia;
 import br.com.advocacysaude.model.Usuario;
 import br.com.advocacysaude.service.NoticiaService;
@@ -24,7 +25,7 @@ public class NoticiaController {
 	public NoticiaController(NoticiaService ns) {
 		super();
 		this.ns = ns;
-	}	
+	}
 
 	@GetMapping("/painel/noticia/cadastro")
 	public String getCadastrarNoticia(HttpServletRequest request, Model model) {
@@ -32,10 +33,13 @@ public class NoticiaController {
 		// paths da requisição e de redirecionamento
 		model.addAttribute("path", request.getContextPath());
 
-		return "";
+		Relevancia[] relevancias = Relevancia.values();
+		model.addAttribute("relevancias", relevancias);
+
+		return "painel/moderador/noticia/cadastro-noticia";
 	}
 
-	@PostMapping("painel/noticia/cadastro")
+	@PostMapping("/painel/noticia/cadastro")
 	public String postCadastrarNoticia(Noticia noticia, HttpServletRequest request, Model model) {
 
 		// paths da requisição e de redirecionamento
@@ -43,34 +47,40 @@ public class NoticiaController {
 
 		Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
 
-		noticia = ns.save(noticia, usuario);
+		noticia = ns.save(noticia, usuario, request);
 		model.addAttribute("noticia", noticia);
 
-		return "";
+		return "painel/moderador/noticia/cadastro-noticia";
 	}
 	
-	@GetMapping("/noticia/{id}")
-	public String getVisualizarNoticiaHome(@PathVariable Long id, HttpServletRequest request, Model model) {
+	@GetMapping("painel/noticias")
+	public String getListarNoticiasPainel(HttpServletRequest request, Model model) {
 
 		// paths da requisição e de redirecionamento
 		model.addAttribute("path", request.getContextPath());
 
-		Optional<Noticia> noticia = ns.findById(id);
-		model.addAttribute("noticia", noticia.get());
+		Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
 
-		return "";
-	}
+		List<Noticia> noticias = new ArrayList<Noticia>();
+		noticias = ns.findAll();
+		model.addAttribute("noticias", noticias);
 
-	@GetMapping("painel/noticia/{id}")
-	public String getVisualizarNoticiaPainel(@PathVariable Long id, HttpServletRequest request, Model model) {
+		switch (usuario.getTipo()) {
+		case USUARIO_PF:
+			return "painel/usuario-pf/noticia/lista-noticias";
+		case USUARIO_PJ:
+			return "painel/usuario-pj/noticia/lista-noticias";
 
-		// paths da requisição e de redirecionamento
-		model.addAttribute("path", request.getContextPath());
+		case USUARIO_MODERADOR:
+			return "painel/moderador/noticia/lista-noticias";
 
-		Optional<Noticia> noticia = ns.findById(id);
-		model.addAttribute("noticia", noticia.get());
+		case USUARIO_ADMIN:
+			return "";
 
-		return "";
+		default:
+			return "";
+		}
+
 	}
 
 }

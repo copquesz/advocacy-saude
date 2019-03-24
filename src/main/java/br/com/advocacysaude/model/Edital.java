@@ -59,7 +59,7 @@ public class Edital implements Serializable{
 	
 	@JoinColumn(name = "empresa_id")
 	@ManyToOne(fetch = FetchType.EAGER)
-	private Empresa empresa;
+	private Entidade empresa;
 	
 	@JoinColumn(name = "usuario_id")
 	@ManyToOne(fetch = FetchType.LAZY)

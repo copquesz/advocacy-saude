@@ -32,7 +32,7 @@ public class UsuarioRestrito extends PessoaFisica {
 	@ManyToMany
 	@JoinTable(name = "usuario_restrito_has_empresas", joinColumns = {
 			@JoinColumn(name = "usuario_restrito_id") }, inverseJoinColumns = { @JoinColumn(name = "empresa_id") })
-	private List<Empresa> empresas;
+	private List<Entidade> empresas;
 
 	@ManyToMany
 	@JoinTable(name = "usuario_restrito_has_eventos", joinColumns = {

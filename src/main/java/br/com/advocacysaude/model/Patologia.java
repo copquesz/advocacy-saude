@@ -36,7 +36,7 @@ public class Patologia implements Serializable{
 	
 	private String descricao;	
 	
-	@OneToMany(mappedBy = "patologia", fetch = FetchType.LAZY, orphanRemoval = true)
+	@OneToMany(mappedBy = "patologia", fetch = FetchType.EAGER, orphanRemoval = true)
 	private List<SubPatologia> subpatologias;
 	
 }

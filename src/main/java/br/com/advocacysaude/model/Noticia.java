@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +18,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import br.com.advocacysaude.enumerated.Relevancia;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -49,6 +52,9 @@ public class Noticia  implements Serializable{
 	@Column(columnDefinition = "TEXT")
 	private String referencia;
 	
+	@Enumerated(EnumType.ORDINAL)
+	private Relevancia relevancia;
+	
 	@JoinColumn(name = "banner_id")
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Arquivo banner;
@@ -56,5 +62,9 @@ public class Noticia  implements Serializable{
 	@JoinColumn(name = "usuario_id")
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Usuario usuario;
+	
+	public Noticia() {
+		this.dataCadastro = new Date();
+	}
 
 }
