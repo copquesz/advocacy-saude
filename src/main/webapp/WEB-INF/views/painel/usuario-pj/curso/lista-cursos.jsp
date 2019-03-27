@@ -175,7 +175,7 @@
                                 <c:forEach var="curso" items="${cursos}">
                                   <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4 my-3 align-items-stretch">
                                       <div class="card mb-3" style="min-height: 650px;">
-                                          <a href="${path}/painel/curso/${curso.id}"><img class="card-img-top" src="${path}/${curso.banner.caminho}" alt="${curso.titulo}" width="360" height="360"></a>
+                                          <a href="${path}/painel/curso/${curso.id}"><img class="card-img-top" src="${path}/${curso.banner.caminho}" alt="${curso.titulo}" width="360" height="270"></a>
                                           <div class="card-body bg-light">
                                               <h5 class="card-title"><strong>${curso.titulo}</strong></h5>
                                               <p class="card-text text-justify">${curso.introducao}</p>              

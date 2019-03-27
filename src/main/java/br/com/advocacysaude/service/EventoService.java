@@ -23,7 +23,9 @@ public class EventoService {
 	public Evento save(Evento evento, Usuario usuario, HttpServletRequest request) {
 		evento.setUsuario(usuario);
 		
-		evento.getBanner().setExtensao(evento.getBanner().getArquivo().getOriginalFilename().split("\\.")[1]);
+		//Upload Banner
+		String [] extensaoBanner = evento.getBanner().getArquivo().getOriginalFilename().split("\\.");
+		evento.getBanner().setExtensao(extensaoBanner[extensaoBanner.length - 1]);
 		evento.getBanner().setCaminho(
 				upload(request, 
 						evento.getBanner().getArquivo(), 

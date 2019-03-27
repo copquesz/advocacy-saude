@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
   <link rel="stylesheet" href="${path}/painel/css/style.css">
   <link rel="stylesheet" href="${path}/painel/css/custom-style.css">
-  <link rel="shortcut icon" href="${path}/painel/images/favicon.png" />
+  <link rel="shortcut icon" href="/WEB-INF/classes/static/img/favicon.png" />
 </head>
 
 <body>
@@ -175,7 +175,7 @@
                     <div class="loop owl-carousel owl-theme">
                       <c:forEach var="curso" items="${cursos}">    
                         <div class="item">
-                          <a href="${path}/painel/curso/${curso.id}"><img class="m-2" src="${path}/${curso.banner.caminho}" alt="${curso.titulo}" style="max-height: 270px; max-width: 360px;"></a>
+                          <a href="${path}/painel/curso/${curso.id}"><img class="m-2" src="${path}/${curso.banner.caminho}" alt="${curso.titulo}"></a>
                         </div>
                       </c:forEach>
                     </div>
@@ -252,18 +252,17 @@
                   <c:if test="${not empty noticias}">
                     <div class="row">
                       <div class="col-md-12"> 
-                        <c:forEach var="noticia" items="${noticias}">                       
-                          <div class="item">
+                        <div class="row">
+                          <c:forEach var="noticia" items="${noticias}"> 
                             <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 p-3">
-                            <img class="card-img" src="${path}/${noticia.banner.caminho}" alt="${noticia.titulo}" style="height: 270px; opacity: 0.5;">
+                              <img class="card-img" src="${path}/${noticia.banner.caminho}" alt="${noticia.titulo}" style="height: 270px; opacity: 0.5;">
                               <div class="card-img-overlay text-black">
                                 <h5 class="card-title text-black text-center p-3"><strong>${noticia.titulo}</strong></h5>
-                                <p class="card-text text-justify p-3">${noticia.introducao}</p>
                                 <p class="card-text text-center p-3" style="position: absolute; bottom: 0; margin-bottom: 10px;"><strong>Publicado: <fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${noticia.dataCadastro}"/></strong></p>
                               </div>
                             </div>
-                          </div>
-                        </c:forEach>
+                          </c:forEach>
+                        </div>
                       </div>
                     </div>
                   </c:if>
@@ -300,32 +299,23 @@
   <script src="${path}/painel/js/off-canvas.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>   
   <script>
-    $('.loop').owlCarousel({
-      center: true,
-      items: 3,
-      loop: true,
-      margin: 10,
-      autoplay: true,
-      autoplayTimeout: 1000,
-      autoplayHoverPause: true,
-      responsive: {
-        600: {
-          items: 1
-        }
-      }
-    });
-
     $('.owl-carousel').owlCarousel({
       center: true,
       items: 3,
       loop: true,
       margin: 10,
       autoplay: true,
-      autoplayTimeout: 1000,
+      autoplayTimeout: 3000,
       autoplayHoverPause: true,
-      responsive: {
-        600: {
-          items: 1
+      responsive:{
+        0:{
+            items:0
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:3
         }
       }
     });

@@ -21,21 +21,22 @@ public class NoticiaService {
 	private NoticiaRepository repository;
 
 	public Noticia save(Noticia noticia, Usuario usuario, HttpServletRequest request) {
-		
+
 		noticia.setUsuario(usuario);
 
 		if (noticia.getReferencia().equals("http://")) {
 			noticia.setReferencia(null);
 		}
-		
-		noticia.getBanner().setExtensao(noticia.getBanner().getArquivo().getOriginalFilename().split("\\.")[1]);
+
+		// Upload Banner
+		String[] extensaoBanner = noticia.getBanner().getArquivo().getOriginalFilename().split("\\.");
+		noticia.getBanner().setExtensao(extensaoBanner[extensaoBanner.length - 1]);
 		noticia.getBanner().setCaminho(
 				upload(
-						request, 
-						noticia.getBanner().getArquivo(), 
+						request, noticia.getBanner().getArquivo(),
 						"banner." + noticia.getBanner().getExtensao(), 
 						"documentos/noticias/" + noticia.getTitulo()));
-		
+
 		return repository.save(noticia);
 	}
 

@@ -216,16 +216,17 @@
                       </div>
                       <div class="card-body"> 
                         <div class="row justify-content-start align-items-stretch">
-                            <c:if test="${empty eventos}">
-                              <div class="col-12">
-                                <div class="alert alert-danger" role="alert">
-                                  Não há eventos cadastrado(s).
-                                </div>
+                          <c:if test="${empty eventos}">
+                            <div class="col-12">
+                              <div class="alert alert-danger" role="alert">
+                                Não há eventos cadastrado(s). <a href="#" data-toggle="modal" data-target="#modal-cadastro-evento" class="alert-link">Clique aqui</a> para cadastrar
                               </div>
-                            </c:if>
-                            <c:if test="${not empty eventos}">
+                            </div>
+                          </c:if>
+                          <c:if test="${not empty eventos}">
+                            <div class="row">
                               <c:forEach var="evento" items="${eventos}">                                 
-                                  <div class="col-md-12 col-lg-6 col-xl-4 my-3">
+                                  <div class="col-md-12 col-lg-6 col-xl-4 my-3 d-flex align-items-stretch">
                                     <div class="card mb-3 event-card">
                                       <div class="row no-gutters">
                                         <div class="col-md-12 col-lg-12 col-xl-12">
@@ -244,7 +245,8 @@
                                     </div>
                                   </div>                   
                               </c:forEach>
-                            </c:if>
+                            </div>
+                          </c:if>
                         </div>
                       </div>
                   </div>

@@ -173,7 +173,7 @@
                                         <video controls preload="auto" src="${path}/${curso.video.caminho}" type="video/mp4" style="width: 100%; height: auto;"></video>
                                     </div>
                                     <div class="col-lg-6 grid-margin d-flex align-items-stretch">
-                                        <div class="card" style="height: auto; overflow-y: scroll;">
+                                        <div class="card" style="height: auto; overflow-y: scroll; width: 100%;">
                                             <div class="card-header bg-secondary ">
                                                 <div class="row">
                                                     <div class="col-12 text-center text-white display-5">

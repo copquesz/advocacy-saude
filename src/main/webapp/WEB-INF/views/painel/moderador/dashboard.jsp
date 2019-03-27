@@ -7,17 +7,19 @@
 <head>
   <meta charset="UTF-8">
   <title>Advocacy Saúde - Dashboard</title>
+  <!-- FAVICON -->
+  <link rel="shortcut icon" href="/img/favicon.png" />
+  <!-- BOOTSTRAP -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
-
-  <link rel="stylesheet" href="${path}/painel/iconfonts/mdi/css/materialdesignicons.min.css">
+  <!-- ICONS -->
+  <link rel="stylesheet" href="/painel/iconfonts/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css">
-
+  <!-- CAROUSEL -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-  <link rel="stylesheet" href="${path}/painel/css/style.css">
-  <link rel="stylesheet" href="${path}/painel/css/custom-style.css">
-  <link rel="shortcut icon" href="${path}/painel/images/favicon.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">  
+  <!-- CUSTOM  -->
+  <link rel="stylesheet" href="/painel/css/style.css">
+  <link rel="stylesheet" href="/painel/css/custom-style.css">
 </head>
 
 <body>
@@ -25,11 +27,8 @@
     <!-- partial:${path}/painel/partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="${path}/painel/index.html">
-          <h3 class="py-2" style="border-bottom: 2.5px solid #fdd546;">Advocacy Saúde</h3>
-        </a>
-        <a class="navbar-brand brand-logo-mini" href="${path}/painel/index.html">
-          <h3>Advocacy Saúde</h3>
+        <a class="navbar-brand brand-logo" href="#">
+          <img src="/painel/images/logo-branco.png" style="height: auto;">
         </a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
@@ -181,7 +180,7 @@
                     <div class="loop owl-carousel owl-theme">
                       <c:forEach var="curso" items="${cursos}">    
                         <div class="item">
-                          <a href="${path}/painel/curso/${curso.id}"><img class="m-2" src="${path}/${curso.banner.caminho}" alt="${curso.titulo}" style="max-height: 270px; max-width: 360px;"></a>
+                          <a href="${path}/painel/curso/${curso.id}"><img class="m-2" src="${path}/${curso.banner.caminho}" alt="${curso.titulo}"></a>
                         </div>
                       </c:forEach>
                     </div>
@@ -213,17 +212,17 @@
                       <table class="table">
                         <thead>
                           <tr>
-                            <th class="border">Evento</th>
-                            <th class="border">Data</th>
-                            <th class="border">Local</th>
+                            <th class="border border-primary">Evento</th>
+                            <th class="border border-primary">Data</th>
+                            <th class="border border-primary">Local</th>
                           </tr>
                         </thead>
                         <tbody>
                           <c:forEach var="evento" items="${eventos}">
                             <tr>
-                              <td class="border">${evento.titulo}</td>
-                              <td class="border">${evento.inicio}</td>
-                              <td class="border">${evento.endereco.cidade} / ${evento.endereco.estado}</td>
+                              <td class="border border-primary">${evento.titulo}</td>
+                              <td class="border border-primary">${evento.inicio}</td>
+                              <td class="border border-primary">${evento.endereco.cidade} / ${evento.endereco.estado}</td>
                             </tr>
                           </c:forEach>
                         </tbody>
@@ -241,7 +240,9 @@
               <div class="card" style="background-image: linear-gradient(rgba(254, 202, 87, 0.2), rgba(1, 163, 164, 0.2));"> 
                 <div class="card-header bg-primary ">
                   <div class="row">
-                      <div class="col-12 text-center text-white display-5"><h2><strong>Notícias Recentes</strong></h2></div>
+                      <div class="col-12 text-center text-white display-5">
+                        <h2><strong>Notícias Recentes</strong></h2>
+                      </div>
                   </div>
                 </div>
                 <div class="card-body">                            
@@ -258,18 +259,18 @@
                   <c:if test="${not empty noticias}">
                     <div class="row">
                       <div class="col-md-12"> 
-                        <c:forEach var="noticia" items="${noticias}">                       
-                          <div class="item">
+                        <div class="row">
+                          <c:forEach var="noticia" items="${noticias}"> 
                             <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 p-3">
-                            <img class="card-img" src="${path}/${noticia.banner.caminho}" alt="${noticia.titulo}" style="height: 270px; opacity: 0.5;">
-                              <div class="card-img-overlay text-black">
+                              <img class="card-img" src="${path}/${noticia.banner.caminho}" alt="${noticia.titulo}" style="height: 270px; opacity: 0.3;">
+                              <div class="card-img-overlay text-black">                                
                                 <h5 class="card-title text-black text-center p-3"><strong>${noticia.titulo}</strong></h5>
                                 <p class="card-text text-justify p-3">${noticia.introducao}</p>
                                 <p class="card-text text-center p-3" style="position: absolute; bottom: 0; margin-bottom: 10px;"><strong>Publicado: <fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${noticia.dataCadastro}"/></strong></p>
                               </div>
                             </div>
-                          </div>
-                        </c:forEach>
+                          </c:forEach>
+                        </div>
                       </div>
                     </div>
                   </c:if>
@@ -305,32 +306,23 @@
   <script src="${path}/painel/js/off-canvas.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>   
   <script>
-    $('.loop').owlCarousel({
-      center: true,
-      items: 3,
-      loop: true,
-      margin: 10,
-      autoplay: true,
-      autoplayTimeout: 1000,
-      autoplayHoverPause: true,
-      responsive: {
-        600: {
-          items: 1
-        }
-      }
-    });
-
     $('.owl-carousel').owlCarousel({
       center: true,
       items: 3,
       loop: true,
       margin: 10,
       autoplay: true,
-      autoplayTimeout: 1000,
+      autoplayTimeout: 3000,
       autoplayHoverPause: true,
-      responsive: {
-        600: {
-          items: 1
+      responsive:{
+        0:{
+            items:0
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:3
         }
       }
     });

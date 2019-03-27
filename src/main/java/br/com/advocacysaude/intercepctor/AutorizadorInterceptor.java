@@ -42,7 +42,7 @@ public class AutorizadorInterceptor extends HandlerInterceptorAdapter {
 		// expirada ou inválida.
 		else {
 			request.getSession().setAttribute("uri", uri);
-			response.sendRedirect("/login");
+			response.sendRedirect(request.getContextPath() + "/login");
 			return false;
 		}
 	}

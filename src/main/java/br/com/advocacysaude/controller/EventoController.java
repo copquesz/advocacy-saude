@@ -43,7 +43,7 @@ public class EventoController {
 		evento = es.save(evento, usuario, request);
 		model.addAttribute("evento", evento);
 
-		return "redirect:painel/eventos";
+		return "redirect:/painel/eventos";
 	}
 
 	@GetMapping("/painel/eventos")

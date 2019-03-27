@@ -7,18 +7,19 @@
 <head>
   <meta charset="UTF-8">
   <title>Advocacy Saúde - Eventos</title>
+  <!-- FAVICON -->
+  <link rel="shortcut icon" href="/img/favicon.png" />
+  <!-- BOOTSTRAP -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+  <!-- ICONS -->
+  <link rel="stylesheet" href="/painel/iconfonts/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css">
+  <!-- SUMMERNOTE -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
-
-  <link rel="stylesheet" href="${path}/painel/iconfonts/mdi/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"> 
-
-  <link rel="stylesheet" href="${path}/painel/css/style.css">
-  <link rel="stylesheet" href="${path}/painel/css/custom-style.css">
-  <link rel="shortcut icon" href="${path}/painel/images/favicon.png" />
-
-  <link rel="stylesheet" href="css/custom.css">
-  <style type="text/css">
+  <!-- CUSTOM  -->
+  <link rel="stylesheet" href="/painel/css/style.css">
+  <link rel="stylesheet" href="/painel/css/custom-style.css">
+  <style type="text/css"> 
     .event-card{
       transition: all .2s ease-in-out
     }
@@ -69,19 +70,31 @@
     .review-block-description{
       font-size:13px;
     }
+    @media (min-width: 992px) and (max-width: 1200px){
+      .card-img{
+        height: 250px;        
+      }
+    }
+    @media (min-width: 1201px){
+      .card-img{
+        height: 240px;        
+      }
+    }
+     @media (min-width: 2560px){
+      .card-img{
+        height: 350px;
+      }
+    }
   </style>
 </head>
 
 <body>
   <div class="container-scroller">
-    <!-- partial:${path}/painel/partials/_navbar.html -->
+    <!-- NAVBAR TOP -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="${path}/painel/index.html">
-          <h3 class="py-2" style="border-bottom: 2.5px solid #fdd546;">Advocacy Saúde</h3>
-        </a>
-        <a class="navbar-brand brand-logo-mini" href="${path}/painel/index.html">
-          <h3>Advocacy Saúde</h3>
+        <a class="navbar-brand brand-logo" href="#">
+          <img src="/painel/images/logo-branco.png" style="height: auto;">
         </a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
@@ -96,7 +109,7 @@
           </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
-          <li class="nav-item"><a href="#" class="btn btn-danger float-right my-3" data-toggle="modal" data-target="#modal-cadastro-evento"><i class="far fa-plus-square"></i> <strong>Cadastrar Evento</strong></a></li>                 
+          <li class="nav-item"><a href="${path}/painel/curso/cadastro" class="btn btn-danger float-right my-3" data-toggle="modal" data-target="#modal-cadastro-evento"><i class="far fa-plus-square"></i> <strong>Cadastrar Evento</strong></a></li>
           <li class="nav-item dropdown">
             <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
               data-toggle="dropdown">
@@ -148,7 +161,7 @@
         </button>
       </div>
     </nav>
-    <!-- partial -->
+    <!-- SIDEBAR -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:${path}/painel/partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
@@ -210,7 +223,7 @@
         </ul>
       </nav>
 
-      <!-- partial -->
+      <!-- MAIN CONTAINER -->
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
@@ -222,21 +235,22 @@
                           </div>
                       </div>
                       <div class="card-body"> 
-                        <div class="row justify-content-start align-items-stretch">
-                            <c:if test="${empty eventos}">
-                              <div class="col-12">
-                                <div class="alert alert-danger" role="alert">
-                                  Não há eventos cadastrado(s). <a href="${path}/painel/evento/cadastro" class="alert-link">Clique aqui</a> para cadastrar
-                                </div>
+                        <div class="row justify-content-start">
+                          <c:if test="${empty eventos}">
+                            <div class="col-12">
+                              <div class="alert alert-danger" role="alert">
+                                Não há eventos cadastrado(s). <a href="#" data-toggle="modal" data-target="#modal-cadastro-evento" class="alert-link">Clique aqui</a> para cadastrar
                               </div>
-                            </c:if>
-                            <c:if test="${not empty eventos}">
+                            </div>
+                          </c:if>
+                          <c:if test="${not empty eventos}">
+                            <div class="row">
                               <c:forEach var="evento" items="${eventos}">                                 
-                                  <div class="col-md-12 col-lg-6 col-xl-4 my-3">
+                                  <div class="col-md-12 col-lg-6 col-xl-4 my-3 d-flex align-items-stretch">
                                     <div class="card mb-3 event-card">
                                       <div class="row no-gutters">
                                         <div class="col-md-12 col-lg-12 col-xl-12">
-                                          <a href="#" data-toggle="modal" data-target="#modal-evento-${evento.id}"><img src="${path}/${evento.banner.caminho}" class="card-img" alt="${evento.titulo}" style="height: 100%;"></a>
+                                          <a href="#" data-toggle="modal" data-target="#modal-evento-${evento.id}"><img src="${path}/${evento.banner.caminho}" class="card-img" alt="${evento.titulo}"></a>
                                         </div>
                                         <div class="col-md-12 col-lg-12 col-xl-12">
                                           <div class="card-body">
@@ -251,269 +265,266 @@
                                     </div>
                                   </div>                   
                               </c:forEach>
-                            </c:if>
+                            </div>
+                          </c:if>
                         </div>
                       </div>
                   </div>
-              </div>
+              </div> <!-- main col grid ends -->    
+          </div> <!-- main row ends -->    
+        </div> <!-- content-wrapper ends --> 
+
+        <!-- FOOTER -->   
+        <footer class="footer">
+          <div class="container-fluid clearfix">
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2019
+              Yaba Consultoria Todos os direitos reservados</span>
           </div>
-      </div>
-      <!-- content-wrapper ends -->
+        </footer>   
 
+      </div> <!-- main-panel ends -->
+    </div> <!-- page-body-wrapper ends -->
 
-          <!-- partial:${path}/painel/partials/_footer.html -->
-          <footer class="footer">
-            <div class="container-fluid clearfix">
-              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2019
-                Yaba Consultoria Todos os direitos reservados</span>
-            </div>
-          </footer>
-          <!-- partial -->
-        </div>
-        <!-- main-panel ends -->
-      </div>
-      <!-- page-body-wrapper ends -->
-    </div>
-  </div>
-
-  <!-- Modal Cadastro de Evento -->
-  <div class="modal fade" id="modal-cadastro-evento" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header border">
-          <h5 class="modal-title" id="exampleModalLongTitle"><h2>Cadastro de Evento</h2></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <form class="forms-sample" action="${path}/painel/evento/cadastro" method="post" acceptcharset="UTF-8" enctype="multipart/form-data">
-          <div class="modal-body">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-12">                
-                  <div class="row justify-content-around">
-                    <div class="col-lg-6 p-3 rounded" style="background-color: rgba(38, 103, 115, 0.2);">
-                      <fieldset>
-                      <legend class="pt-3 text-primary"><h4> <i class="far fa-file-alt"></i> Informações Gerais<hr></h4></legend>                    
-                        <div class="row">    
-                          <div class="col-md-12">            
-                            <div class="form-group">
-                              <label>Titulo: </label>
-                              <input type="text" class="form-control" name="titulo" placeholder="Título do evento" required>
+    <!-- Modal Cadastro de Evento -->
+    <div class="modal fade" id="modal-cadastro-evento" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header border">
+            <h5 class="modal-title" id="exampleModalLongTitle"><h2>Cadastro de Evento</h2></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form class="forms-sample" action="${path}/painel/evento/cadastro" method="post" acceptcharset="UTF-8" enctype="multipart/form-data">
+            <div class="modal-body">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-12">                
+                    <div class="row justify-content-around">
+                      <div class="col-lg-6 p-3 rounded" style="background-color: rgba(38, 103, 115, 0.2);">
+                        <fieldset>
+                        <legend class="pt-3 text-primary"><h4> <i class="far fa-file-alt"></i> Informações Gerais<hr></h4></legend>                    
+                          <div class="row">    
+                            <div class="col-md-12">            
+                              <div class="form-group">
+                                <label>Titulo: </label>
+                                <input type="text" class="form-control" name="titulo" placeholder="Título do evento" required>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="row">    
-                          <div class="col-md-6">            
-                            <div class="form-group">
-                              <label>Inicio: </label>
-                              <input type="text" class="form-control" id="inicio" name="inicio" required>
+                          <div class="row">    
+                            <div class="col-md-6">            
+                              <div class="form-group">
+                                <label>Inicio: </label>
+                                <input type="text" class="form-control" id="inicio" name="inicio" required>
+                              </div>
+                            </div>
+                            <div class="col-md-6">            
+                              <div class="form-group">
+                                <label>Fim: </label>
+                                <input type="text" class="form-control" id="fim" name="fim" required>
+                              </div>
                             </div>
                           </div>
-                          <div class="col-md-6">            
-                            <div class="form-group">
-                              <label>Fim: </label>
-                              <input type="text" class="form-control" id="fim" name="fim" required>
+                          <div class="row">    
+                            <div class="col-md-12">            
+                              <div class="form-group">
+                                <label>Organizador: </label>
+                                <input type="text" class="form-control" name="organizador" placeholder="Quem está organizando este evento ?" required>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="row">    
-                          <div class="col-md-12">            
-                            <div class="form-group">
-                              <label>Organizador: </label>
-                              <input type="text" class="form-control" name="organizador" placeholder="Quem está organizando este evento ?" required>
+                          <div class="row">    
+                            <div class="col-md-6">            
+                              <div class="form-group">
+                                <label>Área: </label>
+                                <select class="form-control" name="patologia.id" required>
+                                  <c:forEach var="patologia" items="${patologias}">
+                                    <option value="${patologia.id}">${patologia.nome}</option> 
+                                  </c:forEach>                             
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-md-6">            
+                              <div class="form-group">
+                                <label>Tipo: </label>
+                                <select class="form-control" name="tipo" required>
+                                  <c:forEach var="tipo" items="${tipos}">
+                                    <option value="${tipo}">${tipo.descricao}</option> 
+                                  </c:forEach> 
+                                </select>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="row">    
-                          <div class="col-md-6">            
-                            <div class="form-group">
-                              <label>Área: </label>
-                              <select class="form-control" name="patologia.id" required>
-                                <c:forEach var="patologia" items="${patologias}">
-                                  <option value="${patologia.id}">${patologia.nome}</option> 
-                                </c:forEach>                             
-                              </select>
+                          <div class="row">    
+                            <div class="col-md-12">            
+                              <div class="form-group">
+                                <label>Introdução: </label>
+                                <textarea class="form-control" name="introducao" rows="3" maxlength="90" placeholder="Faça uma breve introdução sobre o evento ..." required></textarea>
+                              </div>
                             </div>
                           </div>
-                          <div class="col-md-6">            
-                            <div class="form-group">
-                              <label>Tipo: </label>
-                              <select class="form-control" name="tipo" required>
-                                <c:forEach var="tipo" items="${tipos}">
-                                  <option value="${tipo}">${tipo.descricao}</option> 
-                                </c:forEach> 
-                              </select>
+                          <div class="row">    
+                            <div class="col-md-12">            
+                              <div class="form-group">
+                                <label>Conteúdo: </label>
+                                <textarea class="form-control" id="summernote" name="conteudo" rows="6" required></textarea>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="row">    
-                          <div class="col-md-12">            
-                            <div class="form-group">
-                              <label>Introdução: </label>
-                              <textarea class="form-control" name="introducao" rows="3" maxlength="90" placeholder="Faça uma breve introdução sobre o evento ..." required></textarea>
+                        </fieldset>                    
+                      </div>
+                      <div class="col-lg-5 p-3 rounded" style="background-color: rgba(38, 103, 115, 0.2);">
+                        <fieldset>
+                        <legend class="pt-3 mb-3 text-primary"><h4> <i class="far fa-image"></i> Banner<hr></h4></legend>
+                          <div class="row justify-content-start">
+                            <div class="col-md-6">            
+                              <div class="form-group">                            
+                                <img src="https://www.nutribulletbrasil.com.br/arquivos/sem-foto.gif?v=635825126906770000"
+                                id="img-banner" src="#" alt="Banner do Evento" class="border rounded" style="max-height: 270px; max-width: 100%;" />
+                                <label class="btn-bs-file btn btn-sm btn-secondary mt-3">
+                                  <strong>Carregar Imagem</strong>
+                                  <input type="file" id="input-img-banner" name="banner.arquivo" required>
+                                </label>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="row">    
-                          <div class="col-md-12">            
-                            <div class="form-group">
-                              <label>Conteúdo: </label>
-                              <textarea class="form-control" id="summernote" name="conteudo" rows="6" required></textarea>
+                        </fieldset>
+                        <fieldset>
+                        <legend class="pt-3 mb-3 text-primary"><h4> <i class="fas fa-map-marked-alt"></i> Local<hr></h4></legend>
+                          <div class="row">    
+                            <div class="col-md-5">            
+                              <div class="form-group">
+                                <label>Cep: </label>
+                                <input type="text" class="form-control" id="cep" name="endereco.cep" placeholder="Informe o cep do evento" required>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </fieldset>                    
-                    </div>
-                    <div class="col-lg-5 p-3 rounded" style="background-color: rgba(38, 103, 115, 0.2);">
-                      <fieldset>
-                      <legend class="pt-3 mb-3 text-primary"><h4> <i class="far fa-image"></i> Banner<hr></h4></legend>
-                        <div class="row justify-content-start">
-                          <div class="col-md-6">            
-                            <div class="form-group">                            
-                              <img src="https://www.nutribulletbrasil.com.br/arquivos/sem-foto.gif?v=635825126906770000"
-                              id="img-banner" src="#" alt="Banner do Evento" class="border rounded" style="max-height: 270px; max-width: 100%;" />
-                              <label class="btn-bs-file btn btn-sm btn-secondary mt-3">
-                                <strong>Carregar Imagem</strong>
-                                <input type="file" id="input-img-banner" name="banner.arquivo" required>
-                              </label>
+                          <div class="row">    
+                            <div class="col-md-7">            
+                              <div class="form-group">
+                                <label>Logradouro: </label>
+                                <input type="text" class="form-control" id="logradouro" name="endereco.logradouro" placeholder="Ex: Avenida Paulista" required>
+                              </div>
+                            </div>
+                            <div class="col-md-2">            
+                              <div class="form-group">
+                                <label>Nº: </label>
+                                <input type="text" class="form-control" name="endereco.logradouro" placeholder="" required>
+                              </div>
+                            </div>
+                            <div class="col-md-3">            
+                              <div class="form-group">
+                                <label>Complemento: </label>
+                                <input type="text" class="form-control" name="endereco.numero" placeholder="Ex: Pavilhão 22">
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </fieldset>
-                      <fieldset>
-                      <legend class="pt-3 mb-3 text-primary"><h4> <i class="fas fa-map-marked-alt"></i> Local<hr></h4></legend>
-                        <div class="row">    
-                          <div class="col-md-5">            
-                            <div class="form-group">
-                              <label>Cep: </label>
-                              <input type="text" class="form-control" id="cep" name="endereco.cep" placeholder="Informe o cep do evento" required>
+                          <div class="row">    
+                            <div class="col-md-7">            
+                              <div class="form-group">
+                                <label>Bairro: </label>
+                                <input type="text" class="form-control" id="bairro" name="endereco.bairro" placeholder="Ex: Bela Vista" required>
+                              </div>
+                            </div>
+                            <div class="col-md-2">            
+                              <div class="form-group">
+                                <label>Cidade: </label>
+                                <input type="text" class="form-control" id="cidade" name="endereco.cidade" placeholder="Ex: São Paulo" required>
+                              </div>
+                            </div>
+                            <div class="col-md-3">            
+                              <div class="form-group">
+                                <label>Estado: </label>
+                                <select class="form-control" id="estado" name="endereco.estado" required>
+                                  <option value="Não primaryrmado">Selecione ...</option>
+                                  <option value="Acre">Acre</option>
+                                  <option value="Alagoas">Alagoas</option>
+                                  <option value="Amapá">Amapá</option>
+                                  <option value="Amazonas">Amazonas</option>
+                                  <option value="Bahia">Bahia</option>
+                                  <option value="Ceará">Ceará</option>
+                                  <option value="Distrito Federal">Distrito Federal</option>
+                                  <option value="Espírito Santo">Espírito Santo</option>
+                                  <option value="Goiás">Goiás</option>
+                                  <option value="Maranhão">Maranhão</option>
+                                  <option value="Mato Grosso">Mato Grosso</option>
+                                  <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
+                                  <option value="Minas Gerais">Minas Gerais</option>
+                                  <option value="Pará">Pará</option>
+                                  <option value="Paraíba">Paraíba</option>
+                                  <option value="Paraná">Paraná</option>
+                                  <option value="Pernambuco">Pernambuco</option>
+                                  <option value="Piauí">Piauí</option>
+                                  <option value="Rio de Janeiro">Rio de Janeiro</option>
+                                  <option value="Rio Grane do Norte">Rio Grande do Norte</option>
+                                  <option value="Rio Grande do Sul">Rio Grande do Sul</option>
+                                  <option value="Rondônia">Rondônia</option>
+                                  <option value="Roraima">Roraima</option>
+                                  <option value="Santa Catarina">Santa Catarina</option>
+                                  <option value="São Paulo">São Paulo</option>
+                                  <option value="Sergipe">Sergipe</option>
+                                  <option value="Tocantins">Tocantins</option>
+                                </select>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="row">    
-                          <div class="col-md-7">            
-                            <div class="form-group">
-                              <label>Logradouro: </label>
-                              <input type="text" class="form-control" id="logradouro" name="endereco.logradouro" placeholder="Ex: Avenida Paulista" required>
-                            </div>
-                          </div>
-                          <div class="col-md-2">            
-                            <div class="form-group">
-                              <label>Nº: </label>
-                              <input type="text" class="form-control" name="endereco.logradouro" placeholder="" required>
-                            </div>
-                          </div>
-                          <div class="col-md-3">            
-                            <div class="form-group">
-                              <label>Complemento: </label>
-                              <input type="text" class="form-control" name="endereco.numero" placeholder="Ex: Pavilhão 22">
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row">    
-                          <div class="col-md-7">            
-                            <div class="form-group">
-                              <label>Bairro: </label>
-                              <input type="text" class="form-control" id="bairro" name="endereco.bairro" placeholder="Ex: Bela Vista" required>
-                            </div>
-                          </div>
-                          <div class="col-md-2">            
-                            <div class="form-group">
-                              <label>Cidade: </label>
-                              <input type="text" class="form-control" id="cidade" name="endereco.cidade" placeholder="Ex: São Paulo" required>
-                            </div>
-                          </div>
-                          <div class="col-md-3">            
-                            <div class="form-group">
-                              <label>Estado: </label>
-                              <select class="form-control" id="estado" name="endereco.estado" required>
-                                <option value="Não primaryrmado">Selecione ...</option>
-                                <option value="Acre">Acre</option>
-                                <option value="Alagoas">Alagoas</option>
-                                <option value="Amapá">Amapá</option>
-                                <option value="Amazonas">Amazonas</option>
-                                <option value="Bahia">Bahia</option>
-                                <option value="Ceará">Ceará</option>
-                                <option value="Distrito Federal">Distrito Federal</option>
-                                <option value="Espírito Santo">Espírito Santo</option>
-                                <option value="Goiás">Goiás</option>
-                                <option value="Maranhão">Maranhão</option>
-                                <option value="Mato Grosso">Mato Grosso</option>
-                                <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
-                                <option value="Minas Gerais">Minas Gerais</option>
-                                <option value="Pará">Pará</option>
-                                <option value="Paraíba">Paraíba</option>
-                                <option value="Paraná">Paraná</option>
-                                <option value="Pernambuco">Pernambuco</option>
-                                <option value="Piauí">Piauí</option>
-                                <option value="Rio de Janeiro">Rio de Janeiro</option>
-                                <option value="Rio Grane do Norte">Rio Grande do Norte</option>
-                                <option value="Rio Grande do Sul">Rio Grande do Sul</option>
-                                <option value="Rondônia">Rondônia</option>
-                                <option value="Roraima">Roraima</option>
-                                <option value="Santa Catarina">Santa Catarina</option>
-                                <option value="São Paulo">São Paulo</option>
-                                <option value="Sergipe">Sergipe</option>
-                                <option value="Tocantins">Tocantins</option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-                      </fieldset>
+                        </fieldset>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="modal-footer">           
-            <button type="submit" class="btn btn-success">Salvar</button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modals Exibir Eventos-->
-  <c:forEach var="evento" items="${eventos}">       
-    <div class="modal fade" id="modal-evento-${evento.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header" style="background: linear-gradient(to right, rgba(1, 163, 164, 1), rgba(254, 202, 87, 1));">
-            <h3 class="modal-title text-white">${evento.titulo}</h3>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">            
-            <div class="text-justify">
-              <h5><strong><i class="fas fa-info-circle"></i> SOBRE O EVENTO:</strong><hr></h5>
-              ${evento.conteudo}
+            <div class="modal-footer">           
+              <button type="submit" class="btn btn-success">Salvar</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
             </div>
-            <div class="text-justify pt-5">
-              <h5><strong><i class="fas fa-map-marked-alt"></i> DATA:</strong><hr></h5>
-              Início: ${evento.inicio}<br>Fim: ${evento.fim}
-            </div>
-            <div class="text-justify pt-5">
-              <h5><strong><i class="far fa-calendar-alt"></i> LOCAL:</strong><hr></h5>
-              ${evento.endereco.logradouro}, ${evento.endereco.numero} <c:if test="${evento.endereco.complemento ne 'Não Informado'}">- ${evento.endereco.complemento}</c:if>              
-              <br>${evento.endereco.bairro}, ${evento.endereco.cidade}/${evento.endereco.estado} - ${evento.endereco.cep}
-            </div>
-            <div class="text-justify pt-5">
-              <h5><strong><i class="far fa-plus-square"></i> OUTRAS INFORMAÇÕES:</strong><hr></h5>
-              Tipo: ${evento.tipo.descricao}<br>Organizador: ${evento.organizador}<br>Área de Interesse: ${evento.patologia.nome}
-            </div>
-          </div>
-          <hr>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
-          </div>
+          </form>
         </div>
       </div>
     </div>
-  </c:forEach>
+
+    <!-- Modals Exibir Eventos-->
+    <c:forEach var="evento" items="${eventos}">       
+      <div class="modal fade" id="modal-evento-${evento.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header" style="background: linear-gradient(to right, rgba(1, 163, 164, 1), rgba(254, 202, 87, 1));">
+              <h3 class="modal-title text-white">${evento.titulo}</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">            
+              <div class="text-justify">
+                <h5><strong><i class="fas fa-info-circle"></i> SOBRE O EVENTO:</strong><hr></h5>
+                ${evento.conteudo}
+              </div>
+              <div class="text-justify pt-5">
+                <h5><strong><i class="fas fa-map-marked-alt"></i> DATA:</strong><hr></h5>
+                Início: ${evento.inicio}<br>Fim: ${evento.fim}
+              </div>
+              <div class="text-justify pt-5">
+                <h5><strong><i class="far fa-calendar-alt"></i> LOCAL:</strong><hr></h5>
+                ${evento.endereco.logradouro}, ${evento.endereco.numero} <c:if test="${evento.endereco.complemento ne 'Não Informado'}">- ${evento.endereco.complemento}</c:if>              
+                <br>${evento.endereco.bairro}, ${evento.endereco.cidade}/${evento.endereco.estado} - ${evento.endereco.cep}
+              </div>
+              <div class="text-justify pt-5">
+                <h5><strong><i class="far fa-plus-square"></i> OUTRAS INFORMAÇÕES:</strong><hr></h5>
+                Tipo: ${evento.tipo.descricao}<br>Organizador: ${evento.organizador}<br>Área de Interesse: ${evento.patologia.nome}
+              </div>
+            </div>
+            <hr>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </c:forEach>
+
+  </div> <!-- container-scroller ends -->
 
   <!-- JQUERY -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
@@ -522,45 +533,46 @@
   <!-- BOOTSTRAP -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <!-- API VIA CEP -->
-  <script src="${path}/js/api-via-cep.js"></script>
+  <script src="/js/api-via-cep.js"></script>
+  <!-- SUMMERNOTE -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>  
-  <!-- API VIA CEP -->
-  <script src="${path}/js/api-via-cep.js"></script>
-  <script src="${path}/painel/js/off-canvas.js"></script>  
+  <!-- MASKINPUT -->
+  <script src="/js/jquery.maskedinput.js"></script>
+  <!-- OFFCANVAS -->
+  <script src="/painel/js/off-canvas.js"></script> 
+  <!-- CUSTOM -->
   <script>
-    function readURL(input) {
 
+    //Função de exibição da imagem no preloader do banner
+    function readURL(input) {
       if (input.files && input.files[0]) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
           $('#img-banner').attr('src', e.target.result);
         }
-
         reader.readAsDataURL(input.files[0]);
       }
     }
 
+    // Evento para exibir a imagem no preloader
     $("#input-img-banner").change(function () {
       readURL(this);
     });
-  </script>
 
-  <script>
+    ///Instância do Summernote
     $('#summernote').summernote({
       placeholder: 'Descreva o que é ofertado, informações adicionais e curiosidades do evento ...',
       tabsize: 2,
       height: 200
     });
-  </script>
 
-  <script src="${path}/js/jquery.maskedinput.js"></script>
-  <script type="text/javascript">    
+    //Instância da máscara dos inputs
     $("#cep").mask("99999-999");
     $("#inicio").mask("99/99/9999 - 99:99");
     $("#fim").mask("99/99/9999 - 99:99");
-  </script>
 
+  </script>
 </body>
 
 </html>

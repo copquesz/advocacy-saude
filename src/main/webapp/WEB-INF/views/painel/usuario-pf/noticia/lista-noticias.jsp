@@ -86,7 +86,7 @@
     }
     .text-shadow{
       text-shadow: 1px 1px 2px #00b894;
-}
+    }
   </style>
 
 </head>
@@ -244,18 +244,15 @@
                     </c:if>
                     <c:if test="${not empty noticias}">
                       <c:forEach var="noticia" items="${noticias}"> 
-                        <div class="col-md-6 px-4 py-4 lib-item" data-category="view">
+                        <div class="col-xl-4 col-lg-6 col-md-6 px-4 py-4 lib-item" data-category="view">
                           <div class="card-noticia">
                             <div class="row box-shadow">
-                              <div class="col-md-6">
+                              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                   <a href="#" data-toggle="modal" data-target="#modal-noticia-${noticia.id}"><img class="border rounded" src="${path}/${noticia.banner.caminho}"></a>
                               </div>
-                              <div class="col-md-6">
+                              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                 <div class="card-row card-header text-primary text-shadow p-3">${noticia.titulo}</div>
-                                <div class="card-row card-content text-justify pt-3">${noticia.introducao}</div>
-                                <p class="text-primary" style="position: absolute; bottom: 0; padding-bottom: 2px; padding-left: 18px;">
-                                  <strong><i class="far fa-calendar-check"></i> Publicado:</strong> <fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${noticia.dataCadastro}"/>
-                                </p>
+                                <div class="card-row card-content text-justify py-3">${noticia.introducao}</div>                                
                               </div>
                             </div>
                           </div>

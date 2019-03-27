@@ -46,11 +46,13 @@ public class NoticiaController {
 		model.addAttribute("path", request.getContextPath());
 
 		Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+		
+		System.out.println(noticia);
 
 		noticia = ns.save(noticia, usuario, request);
 		model.addAttribute("noticia", noticia);
 
-		return "painel/moderador/noticia/cadastro-noticia";
+		return "redirect:/painel/noticias";
 	}
 	
 	@GetMapping("painel/noticias")

@@ -14,9 +14,7 @@
 
   <link rel="stylesheet" href="${path}/painel/css/style.css">
   <link rel="stylesheet" href="${path}/painel/css/custom-style.css">
-  <link rel="shortcut icon" href="${path}/painel/images/favicon.png" />
-
-  <link rel="stylesheet" href="css/custom.css">
+  <link rel="shortcut icon" href="${path}/painel/images/favicon.png" />  
 </head>
 
 <body>
@@ -172,33 +170,35 @@
                                 </div>
                               </c:if>
                               <c:if test="${not empty cursos}">
-                                <c:forEach var="curso" items="${cursos}">
-                                  <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4 my-3 align-items-stretch">
-                                      <div class="card mb-3" style="min-height: 650px;">
-                                          <a href="${path}/painel/curso/${curso.id}"><img class="card-img-top" src="${path}/${curso.banner.caminho}" alt="${curso.titulo}" width="360" height="360"></a>
-                                          <div class="card-body bg-light">
-                                              <h5 class="card-title"><strong>${curso.titulo}</strong></h5>
-                                              <p class="card-text text-justify">${curso.introducao}</p>              
-                                              <div class="row mt-3">
-                                                <div class="col-12">
-                                                  <div class="review-block-rate">
-                                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-                                                      <span class="fas fa-star" aria-hidden="true"></span>
-                                                    </button>
-                                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-                                                      <span class="fas fa-star" aria-hidden="true"></span>
-                                                    </button>
-                                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-                                                      <span class="fas fa-star" aria-hidden="true"></span>
-                                                    </button>
-                                                  </div>
-                                                </div>                                    
-                                              </div>                                
-                                              <p class="card-text py-3" style="position: absolute; bottom: 0;"><small class="text-muted">Atualizado a 3 dias atras</small></p>
-                                          </div>
-                                      </div>
-                                  </div>
-                                </c:forEach>
+                                <div class="row">
+                                  <c:forEach var="curso" items="${cursos}">
+                                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4 my-3 d-flex align-items-stretch">
+                                        <div class="card" style="height: auto;">
+                                            <a href="${path}/painel/curso/${curso.id}"><img class="card-img-top" src="${path}/${curso.banner.caminho}" alt="${curso.titulo}" style="height: auto;"></a>
+                                            <div class="card-body bg-light">
+                                                <h5 class="card-title"><strong>${curso.titulo}</strong></h5>
+                                                <p class="card-text text-justify">${curso.introducao}</p>              
+                                                <div class="row mt-3 py-4">
+                                                  <div class="col-12">
+                                                    <div class="review-block-rate">
+                                                      <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                                                        <span class="fas fa-star" aria-hidden="true"></span>
+                                                      </button>
+                                                      <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                                                        <span class="fas fa-star" aria-hidden="true"></span>
+                                                      </button>
+                                                      <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                                                        <span class="fas fa-star" aria-hidden="true"></span>
+                                                      </button>
+                                                    </div>
+                                                  </div>                                    
+                                                </div>                                
+                                                <p class="card-text mb-2" style="position: absolute; bottom: 0;"><small class="text-muted">Atualizado a 3 dias atras</small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </c:forEach>
+                                </div>
                               </c:if>
                           </div>
                       </div>

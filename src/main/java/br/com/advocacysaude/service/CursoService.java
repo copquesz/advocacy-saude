@@ -24,14 +24,16 @@ public class CursoService {
 		curso.setUsuario(usuario);
 		
 		//Upload Banner
-		curso.getBanner().setExtensao(curso.getBanner().getArquivo().getOriginalFilename().split("\\.")[1]);
+		String [] extensaoBanner = curso.getBanner().getArquivo().getOriginalFilename().split("\\.");
+		curso.getBanner().setExtensao(extensaoBanner[extensaoBanner.length - 1]);
 		curso.getBanner().setCaminho(upload(request, 
 				curso.getBanner().getArquivo(), 
 				"banner." + curso.getBanner().getExtensao(), 
 				"documentos/cursos/" + curso.getTitulo()));
 		
 		//Upload Vídeo
-		curso.getVideo().setExtensao(curso.getVideo().getArquivo().getOriginalFilename().split("\\.")[1]);
+		String [] extensaoVideo = curso.getVideo().getArquivo().getOriginalFilename().split("\\.");
+		curso.getVideo().setExtensao(extensaoVideo[extensaoVideo.length - 1]);
 		curso.getVideo().setCaminho(upload(request, 
 						curso.getVideo().getArquivo(), 
 						"video." + curso.getVideo().getArquivo().getOriginalFilename().split("\\.")[1], 

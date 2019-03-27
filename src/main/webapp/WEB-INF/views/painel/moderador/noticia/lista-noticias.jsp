@@ -9,15 +9,16 @@
 <head>
   <meta charset="UTF-8">
   <title>Advocacy Saúde - Notícias</title>
+  <!-- FAVICON -->
+  <link rel="shortcut icon" href="/img/favicon.png" />
+  <!-- BOOTSTRAP -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
-
-  <link rel="stylesheet" href="${path}/painel/iconfonts/mdi/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"> 
-
-  <link rel="stylesheet" href="${path}/painel/css/style.css">
-  <link rel="stylesheet" href="${path}/painel/css/custom-style.css">
-  <link rel="shortcut icon" href="" />
+  <!-- ICONS -->
+  <link rel="stylesheet" href="/painel/iconfonts/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css">
+  <!-- CUSTOM  -->
+  <link rel="stylesheet" href="/painel/css/style.css">
+  <link rel="stylesheet" href="/painel/css/custom-style.css">
 
   <style type="text/css">
     .card-noticia {
@@ -31,62 +32,30 @@
     }
 
     .card-noticia img {
-        width: 480px;
+        width: 100%;
         height: 270px;
         background-color: transparent;
-    }
+    }    
 
-    .card-noticia .row, .card-noticia .col-md-6 {
-        padding: 0;
-        background-color: #FFFFFF;
-    }
-
-    .card-noticia .card-row {
-        padding: 0 20px 0 20px;
-    }
-
-    .card-noticia .card-row.card-header {
-        background-color: #FFFFFF;
-        font-size: 20px;
-        padding: 10px 20px 0 20px;
-    }
-
-    .card-noticia .card-row.card-header .card-header-separator {
-        height: 2px;
-        width: 100%;
-        background-color: #FDD546;
-        margin: 7px 0 7px 0;
-    }
-
-    .card-noticia .card-row.card-content {
-        position: relative;
-        height: 100%;
-        display: block;
-        font-size: 13px;
-    }
-
-    .card-noticia .card-row.card-content a {
-        position: absolute;
-        width: 100%;
-        bottom: 10px;
-        left: 20px;
-    }
-
-    .row-margin-bottom {
-        margin-bottom: 20px;
-    }
-
-    .box-shadow {
-        -webkit-box-shadow: 0 0 10px 0 #ffeaa7;
-        box-shadow: 0 0 10px 0 rgba(0, 0, 0, .10);
-    }
-
-    .no-padding {
-        padding: 0;
-    }
     .text-shadow{
       text-shadow: 1px 1px 2px #00b894;
-}
+    }
+
+    @media (min-width: 992px) and (max-width: 1200px){
+      img > .card-img-top{
+        height: 500px;        
+      }
+    }
+    @media (min-width: 1201px){
+      img > .card-img-top{
+        height: 240px;        
+      }
+    }
+     @media (min-width: 2560px){
+      img > .card-img-top{
+        height: 350px;
+      }
+    }
   </style>
 
 </head>
@@ -96,11 +65,8 @@
     <!-- partial:${path}/painel/partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="${path}/painel/index.html">
-          <h3 class="py-2" style="border-bottom: 2.5px solid #fdd546;">Advocacy Saúde</h3>
-        </a>
-        <a class="navbar-brand brand-logo-mini" href="${path}/painel/index.html">
-          <h3>Advocacy Saúde</h3>
+        <a class="navbar-brand brand-logo" href="#">
+          <img src="/painel/images/logo-branco.png" style="height: auto;">
         </a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
@@ -240,34 +206,32 @@
                     <div class="col-12 text-center text-white display-5"><h2><strong>NOTICIAS</strong></h2></div>
                   </div>
                 </div>
-                <div class="card-body">
-                  <div class="row">
-                    <c:if test="${empty noticias}">
+                <div class="card-body">                  
+                  <c:if test="${empty noticias}">
+                    <div class="row">
                       <div class="col-12">
                         <div class="alert alert-danger" role="alert">
                           Não há notícias cadastrado(s). <a href="${path}/painel/noticia/cadastro" class="alert-link">Clique aqui</a> para cadastrar.
                         </div>
                       </div>
-                    </c:if>
+                    </div>
+                  </c:if>
                     <c:if test="${not empty noticias}">
-                      <c:forEach var="noticia" items="${noticias}"> 
-                        <div class="col-md-6 px-4 py-4 lib-item" data-category="view">
-                          <div class="card-noticia">
-                            <div class="row box-shadow">
-                              <div class="col-md-6">
-                                  <a href="#" data-toggle="modal" data-target="#modal-noticia-${noticia.id}"><img class="border rounded" src="${path}/${noticia.banner.caminho}"></a>
-                              </div>
-                              <div class="col-md-6">
-                                <div class="card-row card-header text-primary text-shadow p-3">${noticia.titulo}</div>
-                                <div class="card-row card-content text-justify pt-3">${noticia.introducao}</div>
-                                <p class="text-primary" style="position: absolute; bottom: 0; padding-bottom: 2px; padding-left: 18px;">
-                                  <strong><i class="far fa-calendar-check"></i> Publicado:</strong> <fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${noticia.dataCadastro}"/>
-                                </p>
+                      <div class="row">
+                        <c:forEach var="noticia" items="${noticias}"> 
+                          <div class="col-xl-4 col-lg-6 col-md-12 px-4 py-4 d-flex align-items-stretch">
+                            <div class="card card-noticia border pb-3">
+                              <img class="card-img-top" src="/${noticia.banner.caminho}" alt="Card image cap">
+                              <h5 class="card-header text-primary text-shadow">${noticia.titulo}</h5>
+                              <div class="card-body">
+                                <h5 class="card-title"><small><strong><i class="far fa-calendar-check"></i> <fmt:formatDate type = "both" dateStyle = "short" timeStyle = "short" value = "${noticia.dataCadastro}"/></strong></small></h5>
+                                <p class="card-text text-justify">${noticia.introducao}.</p>
+                                <a href="#" class="btn btn-primary mb-3" data-toggle="modal" data-target="#modal-noticia-${noticia.id}" style="position: absolute; bottom: 0;">Visualizar</a>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      </c:forEach>
+                        </c:forEach>
+                      </div>
                     </c:if>
                   </div>
                 </div><!-- row ends -->      

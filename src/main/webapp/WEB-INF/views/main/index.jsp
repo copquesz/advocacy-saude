@@ -15,7 +15,7 @@
   <link href="${path}/main/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
@@ -53,38 +53,7 @@
         </ul>
       </div>
     </div>
-  </nav>
-
-  <!-- Modal de login -->
-  <div class="modal fade" id="popUpWindow">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="wrapper fadeInDown">
-          <div id="formContent">
-            <!-- Tabs Titles -->
-
-            <!-- Icon -->
-            <div class="fadeIn first">
-              <img src="${path}/main/img/img-custom/icon-user.jpg" id="icon" alt="User Icon" />
-            </div>
-
-            <!-- Login Form -->
-            <form>
-              <input type="text" id="cpf" class="fadeIn second" name="cpf" placeholder="CPF">
-              <input type="password" id="senha" class="fadeIn third" name="senha" placeholder="Senha">
-              <input type="submit" class="fadeIn fourth" value="Entrar">
-            </form>
-
-            <!-- Remind Passowrd -->
-            <div id="formFooter">
-              <a class="underlineHover" href="cadastro-usuario.html">Ainda não possui cadastro?</a>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  </nav> 
 
   <div id="header">
     <div class="container-fluid p-0">

@@ -6,17 +6,16 @@
 <head>
   <meta charset="UTF-8">
   <title>Advocacy Saúde - Cadastro de Curso</title>
+  <!-- FAVICON -->
+  <link rel="shortcut icon" href="/img/favicon.png" />
+  <!-- BOOTSTRAP -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
-
-  <link rel="stylesheet" href="${path}/painel/iconfonts/mdi/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"> 
-
-  <link rel="stylesheet" href="${path}/painel/css/style.css">
-  <link rel="stylesheet" href="${path}/painel/css/custom-style.css">
-  <link rel="shortcut icon" href="${path}/painel/images/favicon.png" />
-
-  <link rel="stylesheet" href="css/custom.css">
+  <!-- ICONS -->
+  <link rel="stylesheet" href="/painel/iconfonts/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css">
+  <!-- CUSTOM  -->
+  <link rel="stylesheet" href="/painel/css/style.css">
+  <link rel="stylesheet" href="/painel/css/custom-style.css">
 </head>
 
 <body>
@@ -24,11 +23,8 @@
     <!-- partial:${path}/painel/partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="${path}/painel/index.html">
-          <h3 class="py-2" style="border-bottom: 2.5px solid #fdd546;">Advocacy Saúde</h3>
-        </a>
-        <a class="navbar-brand brand-logo-mini" href="${path}/painel/index.html">
-          <h3>Advocacy Saúde</h3>
+        <a class="navbar-brand brand-logo" href="#">
+          <img src="/painel/images/logo-branco.png" style="height: auto;">
         </a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
@@ -181,7 +177,7 @@
                               <c:if test="${not empty cursos}">
                                 <c:forEach var="curso" items="${cursos}">
                                   <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4 my-3 align-items-stretch">
-                                      <div class="card mb-3" style="min-height: 650px;">
+                                      <div class="card mb-3" style="height: auto;">
                                           <a href="${path}/painel/curso/${curso.id}"><img class="card-img-top" src="${path}/${curso.banner.caminho}" alt="${curso.titulo}" width="360" height="360"></a>
                                           <div class="card-body bg-light">
                                               <h5 class="card-title"><strong>${curso.titulo}</strong></h5>

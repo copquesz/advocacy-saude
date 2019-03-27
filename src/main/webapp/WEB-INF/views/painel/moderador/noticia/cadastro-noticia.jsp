@@ -8,16 +8,39 @@
 <head>
   <meta charset="UTF-8">
   <title>Advocacy Saúde - Cadastro de Curso</title>
+  <!-- FAVICON -->
+  <link rel="shortcut icon" href="/img/favicon.png" />
+  <!-- BOOTSTRAP -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+  <!-- ICONS -->
+  <link rel="stylesheet" href="/painel/iconfonts/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css">
+  <!-- SUMMERNOTE -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
-
-  <link rel="stylesheet" href="${path}/painel/iconfonts/mdi/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"> 
-
-  <link rel="stylesheet" href="${path}/painel/css/style.css">
-  <link rel="stylesheet" href="${path}/painel/css/custom-style.css">
-  <link rel="shortcut icon" href="${path}/painel/images/favicon.png" />
-
+  <!-- CUSTOM  -->
+  <link rel="stylesheet" href="/painel/css/style.css">
+  <link rel="stylesheet" href="/painel/css/custom-style.css">
+  <style type="text/css">
+    #img-banner{
+      width: 100%;
+      height: auto;
+    }
+    @media (min-width: 992px) and (max-width: 1200px){
+      #img-banner{
+        height: auto;        
+      }
+    }
+    @media (min-width: 1201px){
+      #img-banner{
+        height: 500px;        
+      }
+    }
+     @media (min-width: 2560px){
+      #img-banner{
+        height: 465px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -25,11 +48,8 @@
     <!-- partial:${path}/painel/partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="${path}/painel/index.html">
-          <h3 class="py-2" style="border-bottom: 2.5px solid #fdd546;">Advocacy Saúde</h3>
-        </a>
-        <a class="navbar-brand brand-logo-mini" href="${path}/painel/index.html">
-          <h3>Advocacy Saúde</h3>
+        <a class="navbar-brand brand-logo" href="#">
+          <img src="/painel/images/logo-branco.png" style="height: auto;">
         </a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
@@ -173,20 +193,20 @@
                   <form class="forms-sample" action="${path}/painel/noticia/cadastro" method="post" acceptcharset="UTF-8" enctype="multipart/form-data">
                     <div class="row">
                       <!-- COLUNA ESQUERDA -->
-                        <div class="col-md-6">
-                            <img src="https://www.nutribulletbrasil.com.br/arquivos/sem-foto.gif?v=635825126906770000" height="500" width="100%" id="img-banner" alt="Banner do Curso" class="border border-primary rounded" />
+                        <div class="col-md-12 col-lg-12 col-xl-6">
+                            <img src="https://www.nutribulletbrasil.com.br/arquivos/sem-foto.gif?v=635825126906770000" id="img-banner" alt="Banner do Curso" class="border border-primary rounded">
                             <div class="form-group py-2">
                                 <label class="btn-bs-file btn btn-lg btn-secondary">Carregar Imagem<input type="file" id="input-file-img-banner" name="banner.arquivo" required/></label>
                             </div>
                         </div><!-- col-6 esquerda ends -->  
 
                         <!-- COLUNA DIREITA - FORMULARIO -->
-                        <div class="col-md-6">
+                        <div class="col-md-12 col-lg-12 col-xl-6">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Titulo</label>
-                                        <input type="text" class="form-control" name="titulo" placeholder="Escreva um título para a notícia ..." required>
+                                        <input type="text" class="form-control" name="titulo" placeholder="Escreva um título para a notícia ..." maxlength="60" required>
                                     </div>
                                 </div>
                             </div>
@@ -264,14 +284,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script> 
-  <script src="${path}/painel/js/off-canvas.js"></script>   
-  <script>
-    $('#summernote').summernote({
-        placeholder: 'Escreva o artigo aqui ...',
-        tabsize: 2,
-        height: 100
-    });
-  </script>
+  <script src="${path}/painel/js/off-canvas.js"></script>
+
   <script>
     function readURL(input) {
       if (input.files && input.files[0]) {
@@ -286,7 +300,14 @@
     $("#input-file-img-banner").change(function () {
         readURL(this);
     });
+
+    $('#summernote').summernote({
+        placeholder: 'Escreva o artigo aqui ...',
+        tabsize: 2,
+        height: 100
+    });
   </script>
+
 </body>
 
 </html>
